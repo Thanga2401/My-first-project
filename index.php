@@ -8,7 +8,7 @@ $page_title = "Welcome";
 
 // Fetch quick live stats for public display
 $bus_count_query = mysqli_query($conn, "SELECT COUNT(*) AS total FROM buses WHERE status='Active'");
-$bus_count = ($bus_count_query) ? mysqli_fetch_assoc($bus_count_query)['total'] : 0;
+$bus_count = ($bus_count_query) ? mysqli_fetch_assoc($bus_count_query)['total'] : 0 ;
 
 $route_count_query = mysqli_query($conn, "SELECT COUNT(*) AS total FROM routes");
 $route_count = ($route_count_query) ? mysqli_fetch_assoc($route_count_query)['total'] : 0;
