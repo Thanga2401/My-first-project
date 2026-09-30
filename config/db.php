@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $host     = "localhost";
 $username = "root";
 $password = "";
-$database = "bus_pass_db";
+$database = "bus_pass_db_repaired";
 
 // Establish MySQLi connection
 $conn = mysqli_connect($host, $username, $password, $database);
@@ -26,7 +26,7 @@ if (!$conn) {
             <p>Please ensure that:</p>
             <ul>
                 <li>XAMPP MySQL is running.</li>
-                <li>The database <code>bus_pass_db</code> has been imported using phpMyAdmin.</li>
+                <li>The database <code>" . htmlspecialchars($database) . "</code> has been imported using phpMyAdmin.</li>
             </ul>
             <p><strong>MySQL Error:</strong> " . mysqli_connect_error() . "</p>
          </div>");

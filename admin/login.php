@@ -90,19 +90,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     <?php endif; ?>
 
-                    <!-- Default Credentials Tip for Demonstration -->
-                    <div class="alert alert-info py-2 px-3 small mb-3">
-                        <i class="bi bi-info-circle-fill me-1"></i> <strong>Default Admin:</strong><br>
-                        Email: <code>admin@buspass.com</code><br>
-                        Password: <code>Admin@123</code>
-                    </div>
-
                     <form action="login.php" method="POST" autocomplete="off">
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold small">Admin Email Address</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required placeholder="admin@buspass.com">
+                                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required placeholder="Enter administrator email">
                             </div>
                         </div>
 

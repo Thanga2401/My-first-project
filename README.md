@@ -23,7 +23,7 @@ The Bus Pass Management System replaces manual paper-based bus pass issuance wit
 ## 📁 Project Folder Structure
 
 ```text
-bus_pass/
+My-first-project/
 │
 ├── index.php                 # Public Landing Page & Features
 ├── login.php                 # Student / User Login
@@ -75,7 +75,7 @@ bus_pass/
 │   └── script.js             # Form Validations & Client Helpers
 │
 └── database/
-    └── bus_pass_db.sql       # Database Schema & Seed Data
+   └── bus_pass_db_repaired.sql # Parent-first schema and demo data
 ```
 
 ---
@@ -93,9 +93,9 @@ Launch the **XAMPP Control Panel** from your Start menu or desktop shortcut.
 - Both modules should now show green status indicators.
 
 ### STEP 3: Place Project Files in XAMPP `htdocs`
-Copy the entire `bus_pass` folder into your XAMPP web root directory:
+Copy the entire `My-first-project` folder into your XAMPP web root directory:
 ```
-C:\xampp\htdocs\bus_pass
+C:\xampp\htdocs\My-first-project
 ```
 
 ### STEP 4: Open phpMyAdmin
@@ -108,10 +108,10 @@ http://localhost/phpmyadmin/
 1. In phpMyAdmin, click on the **Import** tab at the top.
 2. Click **Choose File** and select:
    ```
-   C:\xampp\htdocs\bus_pass\database\bus_pass_db.sql
+   C:\xampp\htdocs\My-first-project\database\bus_pass_db_repaired.sql
    ```
 3. Click the **Import** button at the bottom.
-4. Verify that the database `bus_pass_db` is created with tables:
+4. The script creates `bus_pass_db_repaired` with these tables:
    - `users`
    - `students`
    - `buses`
@@ -121,7 +121,7 @@ http://localhost/phpmyadmin/
 ### STEP 6: Open the Application in Your Browser
 Visit the following URL in Google Chrome:
 ```
-http://localhost/bus_pass/
+http://localhost/My-first-project/
 ```
 
 ---
@@ -129,14 +129,17 @@ http://localhost/bus_pass/
 ## 🔑 Default Login Credentials
 
 ### 🛡️ Administrator Account:
-- **URL:** `http://localhost/bus_pass/admin/login.php`
-- **Email:** `admin@buspass.com`
-- **Password:** `Admin@123`
+- **URL:** `http://localhost/My-first-project/admin/login.php`
+- Use the administrator email and password configured for your local database. Do not publish credentials in the login page or project documentation.
 
 ### 🎓 Sample Student Account:
-You can register a new student account at:
-- **URL:** `http://localhost/bus_pass/register.php`
-- Or use any newly registered email and password on `http://localhost/bus_pass/login.php`.
+Four seeded demo accounts use the password `Student@2026`:
+- `aarav.mehta.2026@example.com`
+- `nila.krishnan.2026@example.com`
+- `rohan.iyer.2026@example.com`
+- `mira.das.2026@example.com`
+
+You can register a new student account at `http://localhost/My-first-project/register.php` or sign in at `http://localhost/My-first-project/login.php`.
 
 ---
 
@@ -176,9 +179,9 @@ You can register a new student account at:
 - **Cause:** MySQL is not running in XAMPP.
 - **Solution:** Open XAMPP Control Panel and click **Start** next to MySQL.
 
-### 2. `Table 'bus_pass_db.users' doesn't exist`
+### 2. `Table 'bus_pass_db_repaired.users' doesn't exist`
 - **Cause:** The database SQL file has not been imported yet.
-- **Solution:** Open `http://localhost/phpmyadmin/`, click **Import**, select `database/bus_pass_db.sql`, and click **Import**.
+- **Solution:** Open `http://localhost/phpmyadmin/`, click **Import**, select `database/bus_pass_db_repaired.sql`, and click **Import**.
 
 ### 3. `Access Denied for user 'root'@'localhost'`
 - **Cause:** Your local MySQL has a root password set.
