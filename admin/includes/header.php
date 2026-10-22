@@ -61,6 +61,11 @@ $page_title = isset($page_title) ? $page_title . " - Admin Panel" : "Admin Panel
 
 <div class="container-fluid">
     <div class="row">
+        <div class="col-12 d-md-none py-2 no-print">
+            <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle admin navigation">
+                <i class="bi bi-list me-2"></i>Admin Navigation
+            </button>
+        </div>
         <!-- Sidebar Column -->
         <div class="col-md-3 col-lg-2 px-0 d-md-block collapse admin-sidebar no-print" id="sidebarMenu">
             <?php include_once __DIR__ . '/sidebar.php'; ?>

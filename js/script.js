@@ -24,9 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (targetInput.type === 'password') {
                     targetInput.type = 'text';
                     this.innerHTML = '<i class="bi bi-eye-slash"></i>';
+                    this.setAttribute('aria-label', 'Hide password');
                 } else {
                     targetInput.type = 'password';
                     this.innerHTML = '<i class="bi bi-eye"></i>';
+                    this.setAttribute('aria-label', 'Show password');
                 }
             }
         });
@@ -81,6 +83,19 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!confirm(message)) {
                 e.preventDefault();
             }
+        });
+    });
+
+    // Keep normal browser validation intact, then show feedback during submission.
+    document.querySelectorAll('form').forEach(function (form) {
+        form.addEventListener('submit', function () {
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (!submitButton || submitButton.disabled) return;
+
+            submitButton.dataset.originalContent = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.setAttribute('aria-busy', 'true');
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Processing';
         });
     });
 });

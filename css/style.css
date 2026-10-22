@@ -1,282 +1,163 @@
-/* =======================================================
-   BUS PASS MANAGEMENT SYSTEM - CUSTOM STYLES
-   ======================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --primary-color: #1e40af;
-    --primary-hover: #1d4ed8;
-    --secondary-color: #0f766e;
-    --accent-color: #f59e0b;
-    --dark-bg: #0f172a;
-    --light-bg: #f8fafc;
-    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-    --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --primary-color: #102a43;
+    --primary-hover: #183b56;
+    --secondary-color: #2563eb;
+    --accent-color: #06b6d4;
+    --dark-bg: #102a43;
+    --light-bg: #f5f7fb;
+    --surface: #ffffff;
+    --ink: #243b53;
+    --muted: #627d98;
+    --line: #d9e2ec;
+    --card-shadow: 0 8px 24px rgba(16, 42, 67, 0.06);
+    --card-shadow-hover: 0 14px 30px rgba(16, 42, 67, 0.11);
+    --radius: 10px;
 }
 
-body {
-    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    background-color: var(--light-bg);
-    color: #334155;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+html { scroll-behavior: smooth; }
+body { min-height: 100vh; display: flex; flex-direction: column; background: var(--light-bg); color: var(--ink); font-family: 'Manrope', 'Segoe UI', sans-serif; font-size: 0.94rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+main { flex: 1; }
+a { color: var(--secondary-color); }
+a:hover { color: #1749b1; }
+:focus-visible { outline: 3px solid rgba(6, 182, 212, 0.55); outline-offset: 2px; }
+::selection { color: #fff; background: var(--secondary-color); }
+
+.navbar-custom { z-index: 1030; background: var(--primary-color); box-shadow: 0 3px 14px rgba(16, 42, 67, 0.16); }
+.navbar-custom .navbar-brand { color: #fff !important; font-size: 0.95rem; font-weight: 800; }
+.navbar-custom .navbar-brand i { color: #67e8f9 !important; }
+.navbar-custom .nav-link { padding: 0.55rem 0.75rem; border-radius: 7px; color: #d9e2ec !important; font-size: 0.85rem; font-weight: 700; transition: color 160ms ease, background-color 160ms ease; }
+.navbar-custom .nav-link:hover, .navbar-custom .nav-link.active { color: #fff !important; background: rgba(255, 255, 255, 0.12); }
+.navbar-custom .btn-outline-light { border-color: rgba(255, 255, 255, 0.38); }
+
+.hero-section { position: relative; overflow: hidden; padding: clamp(3.75rem, 8vw, 6.5rem) 0; color: #fff; background: var(--primary-color); }
+.hero-section::before { position: absolute; inset: 0 0 0 auto; width: 42%; content: ''; pointer-events: none; background: linear-gradient(135deg, transparent 20%, rgba(6, 182, 212, 0.12)); }
+.hero-section > .container { position: relative; z-index: 1; }
+.hero-section h1 { max-width: 760px; font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.12; }
+.hero-section .lead { max-width: 650px; font-size: 1.05rem; color: #d9e2ec !important; }
+.hero-section .bg-white { border-radius: var(--radius) !important; box-shadow: 0 22px 50px rgba(3, 18, 34, 0.2) !important; }
+.hero-section .bg-white h4 { color: var(--primary-color); }
+
+.card, .card-custom { border: 1px solid var(--line) !important; border-radius: var(--radius) !important; background-color: var(--surface); box-shadow: var(--card-shadow); }
+.card-custom { transition: box-shadow 180ms ease, border-color 180ms ease; }
+.card-custom:hover { box-shadow: var(--card-shadow-hover); }
+.card-header { border-color: var(--line) !important; }
+.card-header.bg-primary, .card-header.bg-dark { background: var(--primary-color) !important; }
+.rounded-top-3 { border-top-left-radius: var(--radius) !important; border-top-right-radius: var(--radius) !important; }
+
+.stat-card { min-height: 150px; padding: 22px; overflow: hidden; position: relative; border: 1px solid rgba(16, 42, 67, 0.06); border-radius: var(--radius); color: var(--ink); background: #fff; box-shadow: var(--card-shadow); transition: transform 180ms ease, box-shadow 180ms ease; }
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
+.stat-card h6 { position: relative; z-index: 1; color: var(--muted); letter-spacing: 0.04em; }
+.stat-card h2 { position: relative; z-index: 1; color: var(--primary-color); font-size: 1.85rem; }
+.stat-card small, .stat-card small a { position: relative; z-index: 1; color: var(--muted) !important; opacity: 1 !important; }
+.stat-card .stat-icon { position: absolute; top: 18px; right: 18px; color: var(--secondary-color); font-size: 1.45rem; opacity: 0.16; }
+.stat-card-blue, .stat-card-amber, .stat-card-green, .stat-card-red, .stat-card-purple, .stat-card-teal { background: #fff; }
+.stat-card-amber .stat-icon { color: #d97706; }
+.stat-card-green .stat-icon { color: #16803c; }
+.stat-card-red .stat-icon { color: #dc3545; }
+.stat-card-teal .stat-icon { color: #0891b2; }
+
+.badge-pending, .badge-approved, .badge-rejected { padding: 0.42em 0.75em; border: 1px solid transparent; border-radius: 999px; font-weight: 800; }
+.badge-pending { color: #855400; background: #fff4d6; border-color: #f5d88b; }
+.badge-approved { color: #146c43; background: #e3f5eb; border-color: #b8e4c9; }
+.badge-rejected { color: #a52834; background: #fce8e9; border-color: #f3c1c5; }
+
+.btn { min-height: 38px; border-radius: 7px; font-weight: 700; transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { border-color: var(--secondary-color); background: var(--secondary-color); }
+.btn-primary:hover, .btn-primary:focus { border-color: #1d4ed8; background: #1d4ed8; }
+.btn-dark { border-color: var(--primary-color); background: var(--primary-color); }
+.btn-dark:hover { border-color: var(--primary-hover); background: var(--primary-hover); }
+.btn-warning { color: #1f2937; }
+
+.form-control, .form-select, .input-group-text { min-height: 44px; border-color: #cbd5e1; border-radius: 7px; color: var(--ink); background-color: #fff; }
+.input-group > .form-control:not(:last-child), .input-group > .form-select:not(:last-child), .input-group > .input-group-text { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.input-group > .form-control:not(:first-child), .input-group > .form-select:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.input-group > .btn { min-height: 44px; }
+.form-control:focus, .form-select:focus { border-color: var(--accent-color); box-shadow: 0 0 0 0.2rem rgba(6, 182, 212, 0.15); }
+.form-label { color: var(--ink); font-size: 0.87rem; }
+.form-text, .text-muted { color: var(--muted) !important; }
+
+.table-responsive { border-radius: 0 0 var(--radius) var(--radius); }
+.table { --bs-table-color: var(--ink); --bs-table-hover-bg: #f5f9fd; margin-bottom: 0; }
+.table thead th { padding-top: 0.9rem; padding-bottom: 0.9rem; color: #486581; background: #f2f6fa; border-bottom: 1px solid var(--line); font-size: 0.73rem; font-weight: 800; letter-spacing: 0.045em; text-transform: uppercase; white-space: nowrap; }
+.table tbody td { padding-top: 0.85rem; padding-bottom: 0.85rem; border-color: #edf1f5; }
+.table-hover > tbody > tr { transition: background-color 140ms ease; }
+.table td .btn { white-space: nowrap; }
+
+.alert { border-radius: 8px; }
+.footer-custom { margin-top: auto; padding: 22px 0; color: #d9e2ec; background: var(--primary-color); }
+.footer-custom .text-secondary { color: #bcccdc !important; }
+
+.digital-pass-container { width: min(100%, 720px); margin: 24px auto; }
+.digital-pass { position: relative; overflow: hidden; border: 1px solid #b8c9dc; border-radius: 12px; background: #fff; box-shadow: 0 18px 44px rgba(16, 42, 67, 0.14); }
+.pass-header { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 18px 24px; color: #fff; background: var(--primary-color); }
+.pass-body { padding: 26px; }
+.pass-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); color: rgba(37, 99, 235, 0.045); font-size: 5rem; font-weight: 900; pointer-events: none; }
+.pass-table th { width: 35%; padding: 9px 0; color: var(--muted); font-weight: 700; }
+.pass-table td { padding: 9px 0; color: var(--primary-color); font-weight: 700; }
+.pass-footer { display: flex; justify-content: space-between; gap: 12px; padding: 13px 24px; border-top: 1px dashed #bcccdc; color: var(--muted); background: #f5f7fb; font-size: 0.82rem; }
+
+.admin-sidebar { min-height: calc(100vh - 64px); color: #d9e2ec; background: var(--primary-color); }
+.admin-sidebar .position-sticky { top: 78px; }
+.admin-sidebar .nav-link { display: flex; align-items: center; gap: 12px; margin: 3px 10px; padding: 11px 14px; border-left: 3px solid transparent; border-radius: 6px; color: #bcccdc; font-size: 0.88rem; font-weight: 700; transition: color 150ms ease, background-color 150ms ease; }
+.admin-sidebar .nav-link:hover, .admin-sidebar .nav-link.active { border-left-color: #06b6d4; color: #fff; background: rgba(255, 255, 255, 0.1); }
+body:has(.admin-sidebar) { background: var(--light-bg) !important; }
+body:has(.admin-sidebar) > .container-fluid { flex: 1; }
+body:has(.admin-sidebar) > .container-fluid > .row { min-height: calc(100vh - 130px); }
+body:has(.admin-sidebar) > .container-fluid > .row > main { min-width: 0; }
+body:has(.admin-sidebar) > footer { margin-top: auto; }
+
+body.bg-dark { color: var(--ink); background: #eaf0f6 !important; }
+body.bg-dark > .container { position: relative; z-index: 1; }
+body.bg-dark::before { position: fixed; inset: 0 auto 0 0; width: 38%; content: ''; background: var(--primary-color); }
+body.bg-dark .card { overflow: hidden; }
+body.bg-dark .card-header { background: var(--primary-color) !important; }
+body.bg-dark .card-body { padding: 2rem !important; }
+body.bg-dark .btn-dark { color: #fff; }
+
+.dropdown-menu { border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--card-shadow-hover); }
+.dropdown-item { padding: 0.55rem 0.9rem; }
+.nav-pills { border-radius: var(--radius) !important; }
+.nav-pills .nav-link { border-radius: 7px; font-weight: 700; }
+
+@media (max-width: 767.98px) {
+    .hero-section { padding: 3.25rem 0; }
+    .hero-section h1 { font-size: 2.35rem; }
+    .navbar-custom .navbar-collapse { padding: 0.6rem 0 0.8rem; }
+    .navbar-custom .navbar-nav { align-items: stretch !important; }
+    .navbar-custom .nav-link { padding: 0.65rem 0.8rem; }
+    .admin-sidebar { min-height: auto; }
+    .admin-sidebar .position-sticky { position: static !important; padding: 12px 0; }
+    body:has(.admin-sidebar) > .container-fluid > .row > main { padding: 1.1rem !important; }
+    .pass-header { align-items: flex-start; flex-direction: column; }
+    .pass-body { padding: 18px; }
+    .pass-footer { align-items: flex-start; flex-direction: column; padding: 12px 18px; }
+    .table { min-width: 680px; }
+    .table .btn { min-height: 34px; }
 }
 
-main {
-    flex: 1;
+@media (max-width: 575.98px) {
+    .container { padding-right: 18px; padding-left: 18px; }
+    .hero-section h1 { font-size: 2rem; }
+    .hero-section .btn { width: 100%; }
+    .stat-card { min-height: 136px; padding: 18px; }
+    body.bg-dark::before { width: 100%; height: 34%; }
+    body.bg-dark .card-body { padding: 1.35rem !important; }
+    .pass-table th { width: 40%; }
+    .pass-watermark { font-size: 3.4rem; }
 }
 
-/* Modern Navbar */
-.navbar-custom {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-.navbar-custom .navbar-brand {
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: #ffffff !important;
-}
-
-.navbar-custom .nav-link {
-    color: #e2e8f0 !important;
-    font-weight: 500;
-    padding: 0.6rem 1rem;
-    transition: all 0.2s ease;
-    border-radius: 6px;
-}
-
-.navbar-custom .nav-link:hover,
-.navbar-custom .nav-link.active {
-    color: #ffffff !important;
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-/* Hero Section */
-.hero-section {
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-    color: white;
-    padding: 80px 0 60px;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-section::after {
-    content: "";
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-}
-
-/* Cards & UI Elements */
-.card-custom {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card-custom:hover {
-    box-shadow: var(--card-shadow-hover);
-}
-
-.stat-card {
-    border-radius: 12px;
-    padding: 24px;
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.stat-card-blue {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-}
-
-.stat-card-amber {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-}
-
-.stat-card-green {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-}
-
-.stat-card-red {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-}
-
-.stat-card-purple {
-    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-}
-
-.stat-card-teal {
-    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
-}
-
-.stat-card .stat-icon {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 3rem;
-    opacity: 0.25;
-}
-
-/* Custom Badges */
-.badge-pending {
-    background-color: #fef3c7;
-    color: #92400e;
-    border: 1px solid #fde68a;
-    font-weight: 600;
-    padding: 0.4em 0.8em;
-}
-
-.badge-approved {
-    background-color: #d1fae5;
-    color: #065f46;
-    border: 1px solid #a7f3d0;
-    font-weight: 600;
-    padding: 0.4em 0.8em;
-}
-
-.badge-rejected {
-    background-color: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
-    font-weight: 600;
-    padding: 0.4em 0.8em;
-}
-
-/* Digital Bus Pass Card */
-.digital-pass-container {
-    max-width: 650px;
-    margin: 20px auto;
-}
-
-.digital-pass {
-    background: #ffffff;
-    border: 2px solid #2563eb;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-    position: relative;
-}
-
-.pass-header {
-    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-    color: white;
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pass-body {
-    padding: 24px;
-}
-
-.pass-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-30deg);
-    font-size: 5rem;
-    font-weight: 900;
-    color: rgba(37, 99, 235, 0.05);
-    pointer-events: none;
-    text-transform: uppercase;
-}
-
-.pass-table th {
-    width: 35%;
-    color: #64748b;
-    font-weight: 600;
-    padding: 8px 0;
-}
-
-.pass-table td {
-    color: #0f172a;
-    font-weight: 700;
-    padding: 8px 0;
-}
-
-.pass-footer {
-    background-color: #f1f5f9;
-    border-top: 1px dashed #cbd5e1;
-    padding: 12px 24px;
-    font-size: 0.85rem;
-    color: #64748b;
-}
-
-/* Admin Sidebar */
-.admin-sidebar {
-    background-color: #0f172a;
-    min-height: calc(100vh - 56px);
-    color: #cbd5e1;
-}
-
-.admin-sidebar .nav-link {
-    color: #94a3b8;
-    padding: 12px 20px;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-left: 4px solid transparent;
-    transition: all 0.2s ease;
-}
-
-.admin-sidebar .nav-link:hover,
-.admin-sidebar .nav-link.active {
-    background-color: #1e293b;
-    color: #ffffff;
-    border-left-color: #3b82f6;
-}
-
-/* Footer */
-.footer-custom {
-    background-color: #0f172a;
-    color: #94a3b8;
-    padding: 24px 0;
-    margin-top: auto;
-}
-
-/* Print CSS for Bus Pass */
 @media print {
-    body {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-    
-    header, 
-    nav, 
-    footer, 
-    .no-print, 
-    .btn, 
-    .alert {
-        display: none !important;
-    }
-
-    .digital-pass-container {
-        max-width: 100% !important;
-        margin: 0 !important;
-        box-shadow: none !important;
-    }
-
-    .digital-pass {
-        border: 2px solid #000000 !important;
-        box-shadow: none !important;
-        page-break-inside: avoid;
-    }
-
-    .pass-header {
-        background: #1e40af !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        color: #ffffff !important;
-    }
+    body { display: block !important; color: #000 !important; background: #fff !important; }
+    header, nav, footer, .no-print, .btn, .alert { display: none !important; }
+    .digital-pass-container { max-width: 100% !important; margin: 0 !important; }
+    .digital-pass { border: 2px solid #000 !important; box-shadow: none !important; page-break-inside: avoid; }
+    .pass-header { color: #fff !important; background: #102a43 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
